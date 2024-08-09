@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
-mongoose.connect('mongodb+srv://abdulmausooq:8080@fuegocluster.c8hjaqp.mongodb.net/event_management')
+mongoose.connect('your-moongoDB-URL')
     .then(() => {
         console.log('Connected to MongoDB');
     })
