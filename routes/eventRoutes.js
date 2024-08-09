@@ -17,12 +17,12 @@ router.get('/new', (req, res) => {
     res.render('events/new');
 });
 
-// Create a new event
 router.post('/', async (req, res) => {
+    const reminder = req.body.reminder === 'on';  // true if checked, false if not
     const event = new Event({
         title: req.body.title,
         date: req.body.date,
-        reminder: req.body.reminder || false,
+        reminder: reminder
     });
     try {
         const newEvent = await event.save();
@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
+
 
 // Form to edit an event
 router.get('/:id/edit', async (req, res) => {
@@ -41,11 +42,11 @@ router.get('/:id/edit', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-
-// Update an event by ID
+// update 
 router.put('/:id', async (req, res) => {
     const eventId = req.params.id;
-    const { title, date, reminder } = req.body;
+    const { title, date } = req.body;
+    const reminder = req.body.reminder === 'on'; // Set reminder to true if the checkbox is checked
 
     try {
         const event = await Event.findById(eventId);
@@ -53,10 +54,12 @@ router.put('/:id', async (req, res) => {
             return res.status(404).json({ message: 'Event not found' });
         }
 
-        event.date = date;
+        // Update event fields
         event.title = title;
+        event.date = date;
         event.reminder = reminder;
 
+        // Save the updated event
         await event.save();
         res.redirect('/events');
     } catch (error) {

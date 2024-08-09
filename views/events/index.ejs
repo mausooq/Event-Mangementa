@@ -1,20 +1,32 @@
 <%- include('../partials/header') %>
 
-<h1>All Events</h1>
-<a href="/events/new">Create New Event</a>
-<ul>
-    <% events.forEach(event => { %>
-        <li>
-            <strong><%= event.title %></strong> - <%= event.date.toDateString() %>
-            <br>
-            Reminder: <%= event.reminder ? 'Yes' : 'No' %>
-            <br>
-            <a href="/events/<%= event._id %>/edit">Edit</a> | 
-            <form action="/events/<%= event._id %>?_method=DELETE" method="POST" style="display:inline;">
-                <button type="submit">Delete</button>
-            </form>
-        </li>
-    <% }); %>
-</ul>
-
-<%- include('../partials/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+    <link rel="stylesheet" href="/css/index.css"></head>
+<body>
+    <div class="container">
+        <h1>All Events</h1>
+        <a href="/events/new">Create New Event</a>
+        <ul>
+            <% events.forEach(event => { %>
+                <li>
+                    <div class="event-title"><%= event.title %></div>
+                    <div class="event-date"><%= event.date.toDateString() %></div>
+                    <div class="event-reminder">Reminder: <%= event.reminder ? 'Yes' : 'No' %></div>
+                    <div class="actions">
+                        <a href="/events/<%= event._id %>/edit">Edit</a> | 
+                        <form action="/events/<%= event._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>

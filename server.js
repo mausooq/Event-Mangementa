@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const eventRoutes = require('./routes/eventRoutes');
 
 const app = express();
@@ -13,6 +14,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 mongoose.connect('mongodb+srv://abdulmausooq:8080@fuegocluster.c8hjaqp.mongodb.net/event_management')
     .then(() => {

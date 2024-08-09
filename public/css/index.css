@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    height: 90vh;
+    margin: auto;
+    overflow: hidden;
+}
+h1 {
+    color: #EEEEEE;
+    text-align: center;
+    padding: 20px;
+}
+.actions a {
+    color: #007bff;
+    text-decoration: none;
+}
+a {
+    color: #EEEEEE;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.event-title {
+    font-size: 1.2em;
+    color: #333;
+}
+.event-date {
+    color: #777;
+}
+.event-reminder {
+    font-weight: bold;
+}
+.actions {
+    margin-top: 10px;
+}
+button {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #c82333;
+}
