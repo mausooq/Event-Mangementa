@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Event</h1>
+<form action="/events/<%= event._id %>?_method=PUT" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" value="<%= event.title %>" required>
+
+    <label for="date">Date:</label>
+    <input type="date" name="date" id="date" value="<%= event.date.toISOString().substring(0, 10) %>" required>
+
+    <label for="reminder">Reminder:</label>
+    <input type="checkbox" name="reminder" id="reminder" <%= event.reminder ? 'checked' : '' %>>
+
+    <button type="submit">Update Event</button>
+</form>
+
+<%- include('../partials/footer') %>

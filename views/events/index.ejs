@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h1>All Events</h1>
+<a href="/events/new">Create New Event</a>
+<ul>
+    <% events.forEach(event => { %>
+        <li>
+            <strong><%= event.title %></strong> - <%= event.date.toDateString() %>
+            <br>
+            Reminder: <%= event.reminder ? 'Yes' : 'No' %>
+            <br>
+            <a href="/events/<%= event._id %>/edit">Edit</a> | 
+            <form action="/events/<%= event._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% }); %>
+</ul>
+
+<%- include('../partials/footer') %>
